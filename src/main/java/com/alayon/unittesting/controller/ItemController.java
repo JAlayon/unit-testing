@@ -1,5 +1,7 @@
 package com.alayon.unittesting.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,5 +23,10 @@ public class ItemController {
 	@GetMapping("/item-from-business-service")
 	public Item getItemFromBusinessService() {
 		return itemBusinessService.retrieveHarcodedItem();
+	}
+
+	@GetMapping("/all-items-from-db")
+	public List<Item> getAllItems() {
+		return itemBusinessService.retrieveAllItems();
 	}
 }

@@ -1,4 +1,7 @@
+
 package com.alayon.unittesting.business;
+
+import java.util.Arrays;
 
 import com.alayon.unittesting.data.SomeDataService;
 
@@ -11,20 +14,10 @@ public class SomeBusinessImpl {
 	}
 
 	public int calculateSum(final int[] data) {
-		int sum = 0;
-		for (final int value : data) {
-			sum += value;
-		}
-		return sum;
+		return Arrays.stream(data).reduce(Integer::sum).orElse(0);
 	}
 
 	public int calculateSumWithDataService() {
-		int sum = 0;
-		final int data[] = someDataService.retrieveAllData();
-		for (final int value : data) {
-			sum += value;
-
-		}
-		return sum;
+		return Arrays.stream(someDataService.retrieveAllData()).reduce(Integer::sum).orElse(0);
 	}
 }
